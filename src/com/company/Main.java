@@ -27,19 +27,19 @@ public class Main {
         char[] hayArr = haystack.toCharArray();
         char[] needArr = needle.toCharArray();
         int hLength = haystack.length();
-        int temp = -1;
+        int output = -1;
         int j = 0;
-
-        for(int i = 0; i < hLength - 1; i++){
-            System.out.println("i = " + i);
-            if(hayArr[i] == needArr[j]){
-                System.out.println("inside: " + j);
-                temp = i-j;
-                j++;
+        if(needle.isEmpty()) {
+            output = 0;
+            for (int i = 0; i < hLength - 2; i++) {
+                System.out.println("i = " + i);
+                if (hayArr[i] == needArr[j]) {
+                    output = i - j;
+                    j++;
+                }
             }
         }
-
-        System.out.println("temp " + temp);
-        return temp;
+        System.out.println("temp " + output);
+        return output;
     }
 }
