@@ -20,40 +20,31 @@ public class Main {
 //        String haystack = "hello";
 //        String needle = "ll";
         String haystack = "hello";
-        String needle = "a";
+        String needle = "lo";
 
-        assert(strStr(haystack,needle) == -1);
+        assert(strStr(haystack,needle) == 3);
     }
 
     public static int strStr(String haystack, String needle) {
-        char[] hayArr = haystack.toCharArray();
-        char[] needArr = needle.toCharArray();
-        int hLength = haystack.length();
+        char[] haystackArr = haystack.toCharArray();
+        char[] needleArr = needle.toCharArray();
         int output = -1;
-        if(haystack.isEmpty()){
-            output = -1;
-        }
-        else if (needle.isEmpty()) {
-            output = 0;
-        }
-        else {
-            output = -1;
-            for (int i = 0; i < hLength - 2; i++) {
-                int j = -1;
-                System.out.println("i = " + i);
-                if (hayArr[i] == needArr[j + 1]) {
-                    while (hayArr[i] == needArr[j + 1]) {
-                        output = i - j + 1;
-                        j++;
-                    }
-                }
-                else{
-                    output = j;
+        output = haystack.isEmpty() ? -1 : -1;
+        output = needle.isEmpty() ? 0 : -1;
+        int j = 0;
+        for(int i = 0; i < haystack.length() - 1; i++) {
+            if(haystackArr[i] == needleArr[j]){
+                int k = i;
+                while(j < needle.length() - 1){
+                    output = haystackArr[k - j] == needleArr[j] ? needleArr[j] : -1;
+                    System.out.println(output);
+                    j++;
+                    k++;
                 }
             }
         }
-
         System.out.println("temp " + output);
         return output;
     }
+
 }
